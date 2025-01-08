@@ -1,0 +1,35 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo" class="bg-gray-100">
+    <ActionBar title="ONYX SYNC" class="bg-purple-600 text-white" />
+    
+    <StackLayout class="p-4">
+        <Label text="ONYX SYNC" class="text-3xl font-bold text-center text-purple-600 mb-4" />
+        
+        <StackLayout class="bg-white rounded-lg p-4 shadow-md mb-4">
+            <Label text="Connection Status" class="text-lg font-semibold mb-2" />
+            <Label text="{{ isConnected ? 'Connected' : 'Disconnected' }}" 
+                   class="{{ isConnected ? 'text-green-600' : 'text-red-600' }} text-center" />
+        </StackLayout>
+
+        <Button text="Connect via USB" 
+                tap="{{ connectViaUSB }}" 
+                class="bg-purple-600 text-white font-semibold p-4 rounded-lg mb-2" />
+        
+        <Button text="Connect via Wi-Fi" 
+                tap="{{ connectViaWiFi }}" 
+                class="bg-purple-600 text-white font-semibold p-4 rounded-lg mb-2" />
+
+        <Label text="{{ statusMessage }}" 
+               class="text-gray-600 text-center" 
+               textWrap="true" />
+               
+        <StackLayout class="bg-white rounded-lg p-4 mt-4" 
+                    visibility="{{ isConnected ? 'visible' : 'collapsed' }}">
+            <Label text="{{ 'Latency: ' + latency + 'ms' }}" 
+                   class="text-sm text-gray-500" />
+            <Label text="{{ 'FPS: ' + fps }}" 
+                   class="text-sm text-gray-500" />
+            <Label text="{{ 'Compression: ' + compressionRatio + 'x' }}" 
+                   class="text-sm text-gray-500" />
+        </StackLayout>
+    </StackLayout>
+</Page>
